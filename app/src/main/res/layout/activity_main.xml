@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f7efe2"
+    android:padding="10dp"
+    tools:context=".MainActivity">
+
+    <me.turkergoksu.lib.PercentageView
+        android:id="@+id/pv1"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:fontFamily="@font/orbitron_bold"
+        app:animDuration="2000"
+        app:centerColor="#f7efe2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:percentage="99"
+        app:progressBackgroundColor="#4d648d"
+        app:progressColor="#283655"
+        app:textColor="#283655"
+        app:textSize="42sp" />
+
+    <me.turkergoksu.lib.PercentageView
+        android:id="@+id/pv2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:fontFamily="@font/stalinist_one_regular"
+        app:animDuration="3000"
+        app:centerColor="#f7efe2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pv1"
+        app:percentage="66"
+        app:progressBackgroundColor="#b3de81"
+        app:progressColor="#68a225"
+        app:textColor="#68a225"
+        app:textSize="20sp" />
+
+    <me.turkergoksu.lib.PercentageView
+        android:id="@+id/pv3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:fontFamily="@font/orbitron_semibold"
+        app:animDuration="4000"
+        app:centerColor="#f7efe2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pv2"
+        app:percentage="33"
+        app:percentageWidth="40"
+        app:progressBackgroundColor="#66a5ad"
+        app:progressColor="#07575b"
+        app:textColor="#07575b"
+        app:textSize="16sp" />
+
+    <me.turkergoksu.lib.PercentageView
+        android:id="@+id/pv4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:fontFamily="@font/orbitron_medium"
+        app:centerColor="#f7efe2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pv3"
+        app:percentage="0"
+        app:percentageWidth="20"
+        app:progressBackgroundColor="#9f4636"
+        app:progressColor="#6c2d2c"
+        app:textColor="#6c2d2c"
+        app:textSize="12sp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

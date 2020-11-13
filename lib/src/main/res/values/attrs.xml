@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="PercentageView">
+        <attr name="percentage" format="integer"/>
+        <attr name="animDuration" format="integer"/>
+        <attr name="percentageWidth" format="integer"/>
+        <attr name="centerColor" format="color"/>
+        <attr name="progressColor" format="color"/>
+        <attr name="progressBackgroundColor" format="color"/>
+        <attr name="textColor" format="color"/>
+        <attr name="textSize" format="dimension"/>
+        <attr name="android:fontFamily" />
+    </declare-styleable>
+</resources>
