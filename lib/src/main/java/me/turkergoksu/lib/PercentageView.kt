@@ -88,8 +88,8 @@ class PercentageView @JvmOverloads constructor(
             )
 
             // PERCENTAGE TEXT SIZE
-            percentageTextPaint.textSize =
-                typedArray.getDimensionPixelSize(R.styleable.PercentageView_textSize, 32).toFloat()
+            percentageTextPaint.textSize = resources.getDimension(R.dimen.default_text_size)
+            typedArray.getDimensionPixelSize(R.styleable.PercentageView_textSize, 32).toFloat()
 
             // PERCENTAGE TEXT FONT
             val fontId = typedArray.getResourceId(R.styleable.PercentageView_android_fontFamily, 0)
@@ -146,7 +146,8 @@ class PercentageView @JvmOverloads constructor(
         )
 
         // Text
-        val textSizeWidth = percentageTextPaint.measureText("%s%%".format(currentPercentage.toInt()))
+        val textSizeWidth =
+            percentageTextPaint.measureText("%s%%".format(currentPercentage.toInt()))
         canvas?.drawText(
             "%s%%".format(currentPercentage.toInt()),
             rectF!!.centerX() - textSizeWidth / 2,

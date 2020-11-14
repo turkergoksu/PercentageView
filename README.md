@@ -50,9 +50,9 @@ percentageView.setPercentage(percentage)
 |`percentage`|`integer`|`0`|Value of the percentage animation at the end.|
 |`animDuration`|`integer`|`1000`|Animation duration in milliseconds.|
 |`percentageWidth`|`float`|`50`|Width of the percentage bar.|
-|`centerColor`|`color`|`-`|Background color of percentage value at the center. I recommend you to do same color as root view's background color. |
-|`progressColor`|`color`|`-`|Animated fill color of the percentage bar.|
-|`progressBackgroundColor`|`color`|`-`|Background color of the percentage bar.|
-|`textColor`|`color`|`-`|Text color of the percentage value at the center.|
+|`centerColor`|`color`|`white`|Background color of percentage value at the center. I recommend you to do same color as root view's background color. |
+|`progressColor`|`color`|`black`|Animated fill color of the percentage bar.|
+|`progressBackgroundColor`|`color`|`gray`|Background color of the percentage bar.|
+|`textColor`|`color`|`black`|Text color of the percentage value at the center.|
 |`textSize`|`dimension`|`32sp`|Text size of the percentage value.|
 |`fontFamily`|`font`|`-`|Font family of the percentage value.|
