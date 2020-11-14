@@ -59,7 +59,7 @@ class PercentageView @JvmOverloads constructor(
 
             // PERCENTAGE WIDTH
             percentageWidth =
-                abs(typedArray.getInt(R.styleable.PercentageView_percentageWidth, 50)).toFloat()
+                abs(typedArray.getFloat(R.styleable.PercentageView_percentageWidth, 50f))
 
             // CENTER COLOR
             centerPaint.color = typedArray.getColor(
@@ -171,5 +171,11 @@ class PercentageView @JvmOverloads constructor(
                 }
             }
         animator?.start()
+    }
+
+    fun setPercentage(percentage: Int) {
+        this.percentage = percentage
+        percentageSweepAngle = (percentage * 270f) / 100
+        startPercentageBarAnimation()
     }
 }

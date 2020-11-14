@@ -3,7 +3,7 @@
     <declare-styleable name="PercentageView">
         <attr name="percentage" format="integer"/>
         <attr name="animDuration" format="integer"/>
-        <attr name="percentageWidth" format="integer"/>
+        <attr name="percentageWidth" format="float"/>
         <attr name="centerColor" format="color"/>
         <attr name="progressColor" format="color"/>
         <attr name="progressBackgroundColor" format="color"/>
