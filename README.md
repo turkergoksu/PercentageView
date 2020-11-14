@@ -1,15 +1,15 @@
 # PercentageView
 A Kotlin based adjustable custom view to show rating of a movie for [Kefilm](https://github.com/turkergoksu/Kefilm) project.
 
-[intro](screenshots/intro.gif?raw=true)
+![intro](screenshots/intro.gif?raw=true)
 
-## Setup
+## 🛠️Setup
 #### 1. Add the JitPack repository to your build file if you didn't add before.
 ```gradle
 allprojects {
     repositories {
-		    ...
-		    maven { url 'https://jitpack.io' }
+        ...
+		maven { url 'https://jitpack.io' }
     }
 }
 ```
@@ -21,10 +21,10 @@ dependencies {
 }
 ```
 
-## Usage
+## 🕹️Usage
 ```xml
 <me.turkergoksu.lib.PercentageView
-        android:id="@+id/pv1"
+        android:id="@+id/percentageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:fontFamily="@font/orbitron_bold"
@@ -44,7 +44,7 @@ var percentage = 100
 percentageView.setPercentage(percentage)
 ```
 
-## Attributes
+## 📝Attributes
 | Name | Format | Default | Description |
 | ---- | ------ | ------- | ----------- |
 |`percentage`|`integer`|`0`|Value of the percentage animation at the end.|
