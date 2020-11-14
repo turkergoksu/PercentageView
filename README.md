@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/turkergoksu/PercentageView.svg)](https://jitpack.io/#turkergoksu/PercentageView)
+
 # PercentageView
 A Kotlin based adjustable custom view to show rating of a movie for [Kefilm](https://github.com/turkergoksu/Kefilm) project.
 
@@ -17,7 +19,7 @@ allprojects {
 #### 2. Add the dependency
 ```gradle
 dependencies {
-    implementation 'TODO'
+    implementation 'com.github.turkergoksu:PercentageView:1.0.1'
 }
 ```
 
