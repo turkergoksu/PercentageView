@@ -19,7 +19,7 @@ allprojects {
 #### 2. Add the dependency
 ```gradle
 dependencies {
-    implementation 'com.github.turkergoksu:PercentageView:1.0.1'
+    implementation 'com.github.turkergoksu:PercentageView:1.0.2'
 }
 ```
 
