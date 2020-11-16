@@ -1,4 +1,5 @@
 [![](https://jitpack.io/v/turkergoksu/PercentageView.svg)](https://jitpack.io/#turkergoksu/PercentageView)
+![](https://img.shields.io/badge/minSdkVersion-21-brightgreen.svg)
 
 # PercentageView
 A Kotlin based adjustable custom view to show rating of a movie for [Kefilm](https://github.com/turkergoksu/Kefilm) project.
