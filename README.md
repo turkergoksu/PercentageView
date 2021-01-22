@@ -20,7 +20,7 @@ allprojects {
 #### 2. Add the dependency
 ```gradle
 dependencies {
-    implementation 'com.github.turkergoksu:PercentageView:1.0.2'
+    implementation 'com.github.turkergoksu:PercentageView:1.0.3'
 }
 ```
 
@@ -38,6 +38,7 @@ dependencies {
         app:progressBackgroundColor="#4d648d"
         app:progressColor="#283655"
         app:textColor="#283655"
+        app:softness="true"
         app:textSize="42sp" />
 ```
 
@@ -59,3 +60,4 @@ percentageView.setPercentage(percentage)
 |`textColor`|`color`|`black`|Text color of the percentage value at the center.|
 |`textSize`|`dimension`|`32sp`|Text size of the percentage value.|
 |`fontFamily`|`font`|`-`|Font family of the percentage value.|
+|`softness`|`boolean`|`true`|Softness of percentage bar. If true it makes fill animation and corners circular.|

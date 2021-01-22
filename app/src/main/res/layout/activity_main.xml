@@ -65,6 +65,7 @@
         app:percentageWidth="40"
         app:progressBackgroundColor="#66a5ad"
         app:progressColor="#07575b"
+        app:softness="false"
         app:textColor="#07575b"
         app:textSize="16sp" />
 
@@ -81,6 +82,7 @@
         app:percentageWidth="20"
         app:progressBackgroundColor="#9f4636"
         app:progressColor="#6c2d2c"
+        app:softness="false"
         app:textColor="#6c2d2c"
         app:textSize="12sp" />
 

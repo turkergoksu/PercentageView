@@ -10,5 +10,6 @@
         <attr name="textColor" format="color"/>
         <attr name="textSize" format="dimension"/>
         <attr name="android:fontFamily" />
+        <attr name="softness" format="boolean"/>
     </declare-styleable>
 </resources>
