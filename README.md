@@ -12,7 +12,7 @@ A Kotlin based adjustable custom view to show rating of a movie for [Kefilm](htt
 allprojects {
     repositories {
         ...
-		maven { url 'https://jitpack.io' }
+        maven { url 'https://jitpack.io' }
     }
 }
 ```
@@ -20,7 +20,7 @@ allprojects {
 #### 2. Add the dependency
 ```gradle
 dependencies {
-    implementation 'com.github.turkergoksu:PercentageView:1.0.3'
+    implementation 'com.github.turkergoksu:PercentageView:1.0.4'
 }
 ```
 
