@@ -19,7 +19,7 @@ import kotlin.math.sin
  */
 
 class PercentageView @JvmOverloads constructor(
-        context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
+    context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
 
     // CONSTANTS
@@ -102,7 +102,8 @@ class PercentageView @JvmOverloads constructor(
 
             // PERCENTAGE TEXT SIZE
             percentageTextPaint.textSize = resources.getDimension(R.dimen.default_text_size)
-            percentageTextPaint.textSize = getDimensionPixelSize(R.styleable.PercentageView_textSize, 32).toFloat()
+            percentageTextPaint.textSize =
+                getDimensionPixelSize(R.styleable.PercentageView_textSize, 32).toFloat()
 
             // PERCENTAGE TEXT FONT
             val fontId = getResourceId(R.styleable.PercentageView_android_fontFamily, 0)
@@ -122,10 +123,10 @@ class PercentageView @JvmOverloads constructor(
         super.onSizeChanged(w, h, oldw, oldh)
 
         rectF = RectF(
-                0f,
-                0f,
-                width.coerceAtMost(height).toFloat(),
-                width.coerceAtMost(height).toFloat()
+            0f,
+            0f,
+            width.coerceAtMost(height).toFloat(),
+            width.coerceAtMost(height).toFloat()
         )
     }
 
@@ -138,20 +139,20 @@ class PercentageView @JvmOverloads constructor(
 
         // Percentage bar background
         canvas?.drawArc(
-                rectF!!,
-                percentageStartAngle,
-                270f, // FIXME: 13-Nov-20 create constant later
-                true,
-                progressBackgroundPaint
+            rectF!!,
+            percentageStartAngle,
+            270f, // FIXME: 13-Nov-20 create constant later
+            true,
+            progressBackgroundPaint
         )
 
         // Percentage bar fill animation
         canvas?.drawArc(
-                rectF!!,
-                percentageStartAngle,
-                currentSweepAngle.toFloat(),
-                true,
-                progressPaint
+            rectF!!,
+            percentageStartAngle,
+            currentSweepAngle.toFloat(),
+            true,
+            progressPaint
         )
 
         // Draw for fill animation
@@ -160,20 +161,20 @@ class PercentageView @JvmOverloads constructor(
 
         // Center circle of percentage bar
         canvas?.drawCircle(
-                rectF!!.centerX(),
-                rectF!!.centerY(),
-                radius - percentageWidth,
-                centerPaint
+            rectF!!.centerX(),
+            rectF!!.centerY(),
+            radius - percentageWidth,
+            centerPaint
         )
 
         // Draw Text
         val textSizeWidth =
-                percentageTextPaint.measureText("%s%%".format(currentPercentage.toInt()))
+            percentageTextPaint.measureText("%s%%".format(currentPercentage.toInt()))
         canvas?.drawText(
-                "%s%%".format(currentPercentage.toInt()),
-                rectF!!.centerX() - textSizeWidth / 2,
-                rectF!!.centerY() + percentageTextPaint.textSize / 2,
-                percentageTextPaint
+            "%s%%".format(currentPercentage.toInt()),
+            rectF!!.centerX() - textSizeWidth / 2,
+            rectF!!.centerY() + percentageTextPaint.textSize / 2,
+            percentageTextPaint
         )
 
         // TODO: 13-Nov-20 Add shining particle effect from bottom
@@ -195,61 +196,60 @@ class PercentageView @JvmOverloads constructor(
          * equals to 0. To fix this if "percentage" value equals to 0 then draw this circle with
          * background color of percentage bar.
          */
-        val tempPaint = progressPaint
+        val tempPaint = Paint(progressPaint)
         if (percentage == 0)
             tempPaint.color = progressBackgroundPaint.color
 
         // Fixed circle at the start
         canvas?.drawCircle(
-                rectF!!.centerX() - distBetweenCenterAndFillCircle *
-                        sin(Math.toRadians(START_ANGLE_OF_PERCENTAGE_BAR)).toFloat(),
-                rectF!!.centerY() + distBetweenCenterAndFillCircle *
-                        cos(Math.toRadians(START_ANGLE_OF_PERCENTAGE_BAR)).toFloat(),
-                fillCircleRadius,
-                tempPaint
+            rectF!!.centerX() - distBetweenCenterAndFillCircle *
+                    sin(Math.toRadians(START_ANGLE_OF_PERCENTAGE_BAR)).toFloat(),
+            rectF!!.centerY() + distBetweenCenterAndFillCircle *
+                    cos(Math.toRadians(START_ANGLE_OF_PERCENTAGE_BAR)).toFloat(),
+            fillCircleRadius,
+            tempPaint
         )
 
         // Fixed circle at the end
         canvas?.drawCircle(
-                rectF!!.centerX() - distBetweenCenterAndFillCircle *
-                        sin(Math.toRadians(END_ANGLE_OF_PERCENTAGE_BAR)).toFloat(),
-                rectF!!.centerY() + distBetweenCenterAndFillCircle *
-                        cos(Math.toRadians(END_ANGLE_OF_PERCENTAGE_BAR)).toFloat(),
-                fillCircleRadius,
-                progressBackgroundPaint
+            rectF!!.centerX() - distBetweenCenterAndFillCircle *
+                    sin(Math.toRadians(END_ANGLE_OF_PERCENTAGE_BAR)).toFloat(),
+            rectF!!.centerY() + distBetweenCenterAndFillCircle *
+                    cos(Math.toRadians(END_ANGLE_OF_PERCENTAGE_BAR)).toFloat(),
+            fillCircleRadius,
+            progressBackgroundPaint
         )
 
         // Endpoint circle of fill animation
         canvas?.drawCircle(
-                rectF!!.centerX() - distBetweenCenterAndFillCircle *
-                        sin(Math.toRadians(currentSweepAngle + 45.0)).toFloat(),
-                rectF!!.centerY() + distBetweenCenterAndFillCircle *
-                        cos(Math.toRadians(currentSweepAngle + 45.0)).toFloat(),
-                fillCircleRadius,
-                progressPaint
+            rectF!!.centerX() - distBetweenCenterAndFillCircle *
+                    sin(Math.toRadians(currentSweepAngle + 45.0)).toFloat(),
+            rectF!!.centerY() + distBetweenCenterAndFillCircle *
+                    cos(Math.toRadians(currentSweepAngle + 45.0)).toFloat(),
+            fillCircleRadius,
+            tempPaint
         )
     }
 
     private fun startPercentageBarAnimation() {
         animator?.cancel()
         animator =
-                ValueAnimator.ofInt(0, percentageSweepAngle.toInt()).apply {
-                    duration = animationDuration.toLong()
-                    interpolator = LinearInterpolator()
-                    addUpdateListener { valueAnimator ->
-                        currentSweepAngle = valueAnimator.animatedValue as Int
-                        currentPercentage =
-                                ceil((valueAnimator.animatedValue as Int * (percentage.toFloat() / percentageSweepAngle)))
-                        invalidate()
-                    }
+            ValueAnimator.ofInt(0, percentageSweepAngle.toInt()).apply {
+                duration = animationDuration.toLong()
+                interpolator = LinearInterpolator()
+                addUpdateListener { valueAnimator ->
+                    currentSweepAngle = valueAnimator.animatedValue as Int
+                    currentPercentage =
+                        ceil((valueAnimator.animatedValue as Int * (percentage.toFloat() / percentageSweepAngle)))
+                    invalidate()
                 }
+            }
         animator?.start()
     }
 
     fun setPercentage(percentage: Int) {
         this.percentage = percentage
         percentageSweepAngle = (percentage * 270f) / 100
-        initAttributes()
         startPercentageBarAnimation()
     }
 }
