@@ -2,6 +2,7 @@ package me.turkergoksu.lib
 
 import android.animation.ValueAnimator
 import android.content.Context
+import android.content.res.TypedArray
 import android.graphics.*
 import android.text.TextPaint
 import android.util.AttributeSet
@@ -46,71 +47,74 @@ class PercentageView @JvmOverloads constructor(
     private var currentSweepAngle = 0
     private var currentPercentage = 0f
 
+    private var typedArray: TypedArray? = null
+
     init {
-        initAttributes(attrs)
+        typedArray = context.theme.obtainStyledAttributes(
+            attrs,
+            R.styleable.PercentageView,
+            0,
+            0
+        )
+        initAttributes()
         startPercentageBarAnimation()
     }
 
-    private fun initAttributes(attrs: AttributeSet?) {
-        val typedArray =
-                context.theme.obtainStyledAttributes(attrs, R.styleable.PercentageView, 0, 0)
-
-        try {
+    private fun initAttributes() {
+        typedArray?.apply {
             // FINAL PERCENTAGE VALUE
-            percentage = abs(typedArray.getInt(R.styleable.PercentageView_percentage, 0))
+            percentage = abs(getInt(R.styleable.PercentageView_percentage, 0))
             percentageSweepAngle = (percentage * 270f) / 100
 
             // ANIMATION DURATION
             animationDuration =
-                    abs(typedArray.getInt(R.styleable.PercentageView_animDuration, 1000))
+                abs(getInt(R.styleable.PercentageView_animDuration, 1000))
 
             // PERCENTAGE WIDTH
             percentageWidth =
-                    abs(typedArray.getFloat(R.styleable.PercentageView_percentageWidth, 50f))
+                abs(getFloat(R.styleable.PercentageView_percentageWidth, 50f))
 
             // CENTER COLOR
-            centerPaint.color = typedArray.getColor(
-                    R.styleable.PercentageView_centerColor,
-                    Color.WHITE
+            centerPaint.color = getColor(
+                R.styleable.PercentageView_centerColor,
+                Color.WHITE
             )
             // TODO: 13-Nov-20 get rootview background color as default value
 
             // PROGRESS COLOR
-            progressPaint.color = typedArray.getColor(
-                    R.styleable.PercentageView_progressColor,
-                    Color.BLACK
+            progressPaint.color = getColor(
+                R.styleable.PercentageView_progressColor,
+                Color.BLACK
             )
 
             // PROGRESS BACKGROUND COLOR
-            progressBackgroundPaint.color = typedArray.getColor(
-                    R.styleable.PercentageView_progressBackgroundColor,
-                    Color.GRAY
+            progressBackgroundPaint.color = getColor(
+                R.styleable.PercentageView_progressBackgroundColor,
+                Color.GRAY
             )
 
             // PERCENTAGE TEXT COLOR
             // Default color value should be same with progressPaint
-            percentageTextPaint.color = typedArray.getColor(
-                    R.styleable.PercentageView_textColor,
-                    Color.BLACK
+            percentageTextPaint.color = getColor(
+                R.styleable.PercentageView_textColor,
+                Color.BLACK
             )
 
             // PERCENTAGE TEXT SIZE
             percentageTextPaint.textSize = resources.getDimension(R.dimen.default_text_size)
-            percentageTextPaint.textSize = typedArray.getDimensionPixelSize(R.styleable.PercentageView_textSize, 32).toFloat()
+            percentageTextPaint.textSize = getDimensionPixelSize(R.styleable.PercentageView_textSize, 32).toFloat()
 
             // PERCENTAGE TEXT FONT
-            val fontId = typedArray.getResourceId(R.styleable.PercentageView_android_fontFamily, 0)
+            val fontId = getResourceId(R.styleable.PercentageView_android_fontFamily, 0)
             if (fontId != 0) {
                 percentageTextPaint.typeface = ResourcesCompat.getFont(context, fontId)
             }
 
             // PERCENTAGE SMOOTHNESS
-            isSmooth = typedArray.getBoolean(
-                    R.styleable.PercentageView_softness,
-                    true
+            isSmooth = getBoolean(
+                R.styleable.PercentageView_softness,
+                true
             )
-        } finally {
-            typedArray.recycle()
         }
     }
 
@@ -245,6 +249,7 @@ class PercentageView @JvmOverloads constructor(
     fun setPercentage(percentage: Int) {
         this.percentage = percentage
         percentageSweepAngle = (percentage * 270f) / 100
+        initAttributes()
         startPercentageBarAnimation()
     }
 }
